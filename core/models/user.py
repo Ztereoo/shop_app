@@ -5,6 +5,8 @@ from .base import Base
 
 if TYPE_CHECKING:
     from .post import Post
+    from .profile import Profile
 class User(Base):
     username: Mapped[str] = mapped_column(String(32), unique=True)
     post: Mapped[list['Post']] = relationship(back_populates="user")
+    profile: Mapped['Profile'] = relationship(back_populates="user")
