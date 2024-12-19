@@ -1,4 +1,3 @@
-from typing import TYPE_CHECKING
 from .base import Base
 from .mixins import UserRelationMixin
 from sqlalchemy import String, Text, ForeignKey
@@ -13,3 +12,8 @@ class Post(UserRelationMixin, Base):
         default="",
         server_default="",
     )
+    def __str__(self):
+        return f"{self.__class__.__name__}(id={self.id}, username={self.title!r}, user_id ={self.user_id})"
+
+    def __repr__(self):
+        return str(self)
